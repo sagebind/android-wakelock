@@ -36,7 +36,7 @@
 //! call [`acquire`][WakeLock::acquire] on the wake lock. This will return a
 //! guard object that will keep the wake lock acquired until it is dropped:
 //!
-//! ```
+//! ```no_run
 //! // Create the wake lock.
 //! let wake_lock = android_wakelock::partial("myapp:mytag")?;
 //!
@@ -47,13 +47,17 @@
 //!
 //! // Release the wake lock to allow the device to sleep again.
 //! drop(guard);
+//!
+//! # Ok::<(), Box<dyn std::error::Error>>(())
 //! ```
 //!
 //! Multiple threads can share the same wake lock and acquire it concurrently. As
 //! long as at least one thread has acquired the wake lock, the device will be
 //! kept awake.
 //!
-//! ```
+//! ```no_run
+//! use std::{sync::Arc, thread};
+//!
 //! // Create the wake lock.
 //! let wake_lock = Arc::new(android_wakelock::partial("myapp:mytag")?);
 //! let wake_lock_clone = wake_lock.clone();
@@ -75,6 +79,8 @@
 //!
 //! worker1.join().unwrap();
 //! worker2.join().unwrap();
+//!
+//! # Ok::<(), Box<dyn std::error::Error>>(())
 //! ```
 
 #![warn(
@@ -107,7 +113,10 @@ type Result<T> = std::result::Result<T, Error>;
 ///
 /// This convenience function is equivalent to the following:
 ///
-/// ```
+/// ```no_run
+/// use android_wakelock::{Level, WakeLock};
+///
+/// # let tag = "myapp:mytag";
 /// WakeLock::builder(tag)
 ///     .level(Level::Partial)
 ///     .build();
@@ -365,7 +374,7 @@ impl WakeLock {
     ///
     /// # Examples
     ///
-    /// ```
+    /// ```no_run
     /// // Create the wake lock.
     /// let wake_lock = android_wakelock::partial("myapp:mytag")?;
     ///
@@ -376,6 +385,8 @@ impl WakeLock {
     ///
     /// // Release the wake lock to allow the device to sleep again.
     /// drop(guard);
+    ///
+    /// # Ok::<(), Box<dyn std::error::Error>>(())
     /// ```
     pub fn acquire(&self) -> Result<Guard<'_>> {
         let mut env = self.vm.attach_current_thread()?;
