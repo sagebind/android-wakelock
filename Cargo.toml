@@ -1,0 +1,16 @@
+[package]
+name = "android-wakelock"
+version = "0.1.0"
+authors = ["Stephen M. Coakley <me@stephencoakley.com>"]
+edition = "2021"
+description = "Safe and ergonomic Rust bindings to the Android WakeLock API"
+repository = "https://github.com/sagebind/android-wakelock"
+readme = "README.md"
+keywords = ["android"]
+categories = ["api-bindings"]
+license = "MIT"
+
+[dependencies]
+jni = "0.21"
+log = "0.4"
+ndk-context = "0.1"
