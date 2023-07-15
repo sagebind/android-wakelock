@@ -1,10 +1,10 @@
 # Android WakeLock
 
-Safe and ergonomic Rust bindings to the [Android WakeLock API](https://developer.android.com/reference/android/os/PowerManager#newWakeLock(int,%20java.lang.String)).
-
-[![Crates.io](https://img.shields.io/crates/v/sluice.svg)](https://crates.io/crates/sluice)
-[![Documentation](https://docs.rs/sluice/badge.svg)](https://docs.rs/sluice)
+[![Crates.io](https://img.shields.io/crates/v/android-wakelock.svg)](https://crates.io/crates/android-wakelock)
+[![Documentation](https://docs.rs/android-wakelock/badge.svg)](https://docs.rs/android-wakelock)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+Safe and ergonomic Rust bindings to the [Android WakeLock API](https://developer.android.com/reference/android/os/PowerManager#newWakeLock(int,%20java.lang.String)). Wake locks allow an app or service to keep an Android device's display or processor awake in order to complete some work. For more information about wake locks, see the official [Android guide](https://developer.android.com/training/scheduling/wakelock).
 
 ## [Documentation]
 
